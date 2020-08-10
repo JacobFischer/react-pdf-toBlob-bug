@@ -68,6 +68,10 @@ export const DownloadFromPDFtoBlob = () => {
       .catch(setError);
   }
 
+  if (error) {
+    console.log("toBlob error!", error);
+  }
+
   return error ? error.toString() : <BlobLink blob={blob} />;
 };
 
@@ -82,6 +86,10 @@ export const DownloadFromPDFtoString = () => {
         setBlob(new Blob([str], { type: "application/pdf" })),
       )
       .catch(setError);
+  }
+
+  if (error) {
+    console.log("toString error!", error);
   }
 
   return error ? error.toString() : <BlobLink blob={blob} />;
