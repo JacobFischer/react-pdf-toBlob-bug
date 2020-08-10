@@ -13,7 +13,7 @@ const BlobLink = ({ blob, ...props }) =>
     ? <a href={URL.createObjectURL(blob)} {...props}>Download Blob</a>
     : <span>Loading Blob...</span>;
 
-const PdfDoc = () => (
+const PdfDoc = (
   <Document>
     <Page>
       <Text>This is the PDF document. Hello!</Text>
@@ -24,7 +24,7 @@ const PdfDoc = () => (
 // works
 export const DownloadFromPDFDownloadLink = () => (
   <div>
-    <PDFDownloadLink document={<PdfDoc />} fileName="pdf-doc.pdf">
+    <PDFDownloadLink document={PdfDoc} fileName="pdf-doc.pdf">
       {({ loading }) => loading
         ? "Loading document..."
         : "Download PDF"
@@ -35,7 +35,7 @@ export const DownloadFromPDFDownloadLink = () => (
 
 // works
 export const DownloadFromPDFBlobProvider = () => (
-  <BlobProvider document={<PdfDoc />}>
+  <BlobProvider document={PdfDoc}>
     {({ blob }) => blob
       ? <BlobLink blob={blob} />
       : <span>Loading blob....</span>
